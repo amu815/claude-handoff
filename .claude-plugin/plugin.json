@@ -1,0 +1,12 @@
+{
+  "name": "claude-handoff",
+  "description": "Auto-generate handoff prompts and restart Claude Code with fresh context. Run /handoff to create a session summary and launch an updated new session.",
+  "version": "1.0.0",
+  "author": {
+    "name": "amu815"
+  },
+  "homepage": "https://github.com/amu815/claude-handoff",
+  "repository": "https://github.com/amu815/claude-handoff",
+  "license": "MIT",
+  "keywords": ["handoff", "context", "session", "restart", "productivity"]
+}
