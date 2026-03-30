@@ -2,6 +2,11 @@
 
 Claude Codeのコンテキストが長くなったとき、引き継ぎプロンプトを生成して新セッションに移行するプラグイン。
 
+## Requirements
+
+- Claude Code CLI
+- Python 3 (used for JSON escaping in hooks)
+
 ## Install
 
 ```bash

@@ -16,4 +16,5 @@ claude update 2>&1 || echo "(Update skipped or failed, continuing...)"
 
 echo ""
 echo "Starting new session..."
+command -v claude >/dev/null 2>&1 || { echo "Error: 'claude' not found on PATH"; exit 1; }
 exec claude

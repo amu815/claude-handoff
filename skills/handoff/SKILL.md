@@ -85,7 +85,7 @@ Write the handoff document to `~/.claude/handoffs/YYYY-MM-DDTHH-MM.md` using the
 Tell the user the handoff is ready, then execute:
 
 ```bash
-bash ${CLAUDE_PLUGIN_ROOT}/scripts/handoff.sh "{handoff_file_path}"
+bash "${CLAUDE_PLUGIN_ROOT}/scripts/handoff.sh" "{handoff_file_path}"
 ```
 
 **IMPORTANT:** This will update Claude Code and start a new session. The SessionStart hook will automatically inject the handoff context.

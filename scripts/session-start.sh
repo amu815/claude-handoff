@@ -2,6 +2,8 @@
 # SessionStart hook: inject latest handoff context into new session
 # Only injects handoff files younger than 10 minutes (600 seconds)
 
+command -v python3 >/dev/null 2>&1 || exit 0
+
 HANDOFF_DIR="$HOME/.claude/handoffs"
 
 [ -d "$HANDOFF_DIR" ] || exit 0
