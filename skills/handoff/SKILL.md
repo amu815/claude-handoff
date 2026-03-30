@@ -80,12 +80,26 @@ Write the handoff document to `~/.claude/handoffs/YYYY-MM-DDTHH-MM.md` using the
 {user message from step 5}
 ```
 
-### Step 7: Launch New Session
+### Step 7: Update and Guide User
 
-Tell the user the handoff is ready, then execute:
+After saving the handoff file:
+
+1. Run `claude update` to ensure the latest version is installed:
 
 ```bash
-bash "${CLAUDE_PLUGIN_ROOT}/scripts/handoff.sh" "{handoff_file_path}"
+claude update 2>&1 || echo "(Update skipped or failed)"
 ```
 
-**IMPORTANT:** This will update Claude Code and start a new session. The SessionStart hook will automatically inject the handoff context.
+2. Tell the user the handoff is complete and instruct them to start a new session:
+
+```
+引き継ぎファイルを保存しました: ~/.claude/handoffs/{filename}
+
+新しいセッションを開始するには、このセッションを終了してから以下を実行してください：
+
+claude
+
+SessionStart フックが自動的に引き継ぎコンテキス��を読み込みます。
+```
+
+**NOTE:** Claude Code's Bash tool runs in a non-interactive subprocess, so `exec claude` cannot replace the current session. The user must manually start the new session after this one ends.
