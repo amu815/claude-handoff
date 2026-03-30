@@ -10,11 +10,7 @@ Claude Codeのコンテキストが長くなったとき、引き継ぎプロン
 ## Install
 
 ```bash
-# Step 1: マーケットプレイスを追加（初回のみ）
-claude plugin marketplace add https://github.com/amu815/claude-handoff.git
-
-# Step 2: プラグインをインストール
-claude plugin install claude-handoff@amu815
+claude plugin install claude-handoff
 ```
 
 ## Usage
