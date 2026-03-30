@@ -1,0 +1,18 @@
+{
+  "name": "amu815",
+  "owner": {
+    "name": "amu815"
+  },
+  "metadata": {
+    "description": "Plugins by amu815",
+    "homepage": "https://github.com/amu815/claude-handoff"
+  },
+  "plugins": [
+    {
+      "name": "claude-handoff",
+      "version": "1.0.0",
+      "source": ".",
+      "description": "Auto-generate handoff prompts and restart Claude Code with fresh context"
+    }
+  ]
+}
