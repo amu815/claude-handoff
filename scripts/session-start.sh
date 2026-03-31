@@ -23,7 +23,12 @@ if [ "$AGE" -lt 600 ]; then
   CONTENT=$(cat "$LATEST")
   PREFIX="=== HANDOFF FROM PREVIOUS SESSION ===
 
-The following is a handoff document from the previous session. Review it and continue the work described.
+The following is a handoff document from the previous session. When the user sends their first message, start by:
+1. Briefly summarize what was being worked on (2-3 sentences)
+2. List any incomplete tasks
+3. Suggest the next action to take
+
+If the user's first message is just a greeting or 'continue', proactively resume the work described below.
 
 "
   FULL="${PREFIX}${CONTENT}"
