@@ -13,6 +13,13 @@ Claude Codeのコンテキストが長くなったとき、引き継ぎプロン
 claude plugin install claude-handoff
 ```
 
+`not found` になる場合は、マーケットプレイスを手動で追加してください：
+
+```bash
+claude plugin marketplace add https://github.com/amu815/claude-handoff.git
+claude plugin install claude-handoff
+```
+
 ## Usage
 
 ### `/handoff` — 引き継ぎして新セッション起動
