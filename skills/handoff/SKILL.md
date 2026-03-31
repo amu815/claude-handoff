@@ -90,16 +90,16 @@ After saving the handoff file:
 claude update 2>&1 || echo "(Update skipped or failed)"
 ```
 
-2. Tell the user the handoff is complete and instruct them to start a new session:
+2. Tell the user the handoff is complete and instruct them to start a new session with the following command:
 
 ```
 引き継ぎファイルを保存しました: ~/.claude/handoffs/{filename}
 
 新しいセッションを開始するには、このセッションを終了してから以下を実行してください：
 
-claude
+claude "前回の引き継ぎを確認して、作業を再開してください"
 
-SessionStart フックが自動的に引き継ぎコンテキス��を読み込みます。
+SessionStartフックが引き継ぎコンテキストを自動注入し、Claudeがすぐに作業を再開します。
 ```
 
 **NOTE:** Claude Code's Bash tool runs in a non-interactive subprocess, so `exec claude` cannot replace the current session. The user must manually start the new session after this one ends.
