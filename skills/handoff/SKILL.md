@@ -43,13 +43,25 @@ Write a concise summary (5-10 sentences) of what was accomplished in this sessio
 
 Write this in the same language the user has been using in the conversation.
 
-### Step 5: Ask for Additional Notes
+### Step 5: Ask for Additional Notes and Model Selection
 
-Ask the user:
+Ask the user both questions at once:
 
 **引き継ぎに追加したいメッセージはありますか？（空Enterでスキップ）**
+**次のセッションで使うモデルを選んでください（空Enterでデフォルト）：**
+- `opus` — Claude Opus 4.6
+- `sonnet` — Claude Sonnet 4.6
+- `haiku` — Claude Haiku 4.5
+- またはフルモデルID（例: `claude-sonnet-4-6`）
 
-Wait for the user's response. If they provide text, include it. If empty or they say skip, write "(None)".
+**effortレベルを選んでください（空Enterでデフォルト）：**
+- `low` — 軽量・高速
+- `medium` — バランス
+- `high` — 高品質
+- `max` — 最大限
+
+Wait for the user's response. If they provide notes, include them. If empty or they say skip, write "(None)".
+Save the selected model and effort level (if any) for use in Step 7.
 
 ### Step 6: Save Handoff File
 
@@ -90,16 +102,21 @@ After saving the handoff file:
 claude update 2>&1 || echo "(Update skipped or failed)"
 ```
 
-2. Tell the user the handoff is complete and instruct them to start a new session with the following command:
+2. Tell the user the handoff is complete and instruct them to start a new session. Build the command by appending flags only for options the user selected in Step 5:
+
+- Model selected → add `--model {model}`
+- Effort selected → add `--effort {level}`
 
 ```
 引き継ぎファイルを保存しました: ~/.claude/handoffs/{filename}
 
 新しいセッションを開始するには、このセッションを終了してから以下を実行してください：
 
-claude "前回の引き継ぎを確認して、作業を再開してください"
+claude {--model model} {--effort level} "前回の引き継ぎを確認して、作業を再開してください"
 
 SessionStartフックが引き継ぎコンテキストを自動注入し、Claudeがすぐに作業を再開します。
 ```
+
+Omit any flag that was not selected (e.g., if only effort was chosen: `claude --effort high "..."`). If neither was selected, output just `claude "..."`.
 
 **NOTE:** Claude Code's Bash tool runs in a non-interactive subprocess, so `exec claude` cannot replace the current session. The user must manually start the new session after this one ends.
