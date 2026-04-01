@@ -60,8 +60,11 @@ Ask the user both questions at once:
 - `high` — 高品質
 - `max` — 最大限
 
+**パーミッションチェックをスキップしますか？（y/空Enterでスキップしない）**
+- `y` — `--dangerously-skip-permissions` を付与（サンドボックス環境向け）
+
 Wait for the user's response. If they provide notes, include them. If empty or they say skip, write "(None)".
-Save the selected model and effort level (if any) for use in Step 7.
+Save the selected model, effort level, and skip-permissions flag (if any) for use in Step 7.
 
 ### Step 6: Save Handoff File
 
@@ -106,6 +109,7 @@ claude update 2>&1 || echo "(Update skipped or failed)"
 
 - Model selected → add `--model {model}`
 - Effort selected → add `--effort {level}`
+- Skip permissions selected → add `--dangerously-skip-permissions`
 
 ```
 引き継ぎファイルを保存しました: ~/.claude/handoffs/{filename}
